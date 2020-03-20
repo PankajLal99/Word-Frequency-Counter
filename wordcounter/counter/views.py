@@ -2,6 +2,7 @@ from django.shortcuts import render,redirect
 from . import scrap
 from .forms import *
 from .models import *
+from operator import itemgetter 
 # Create your views here.
 flag=False
 message=str()
@@ -29,6 +30,7 @@ def index(request):
     return render(request,'index.html',{'form':form})
 
 def result(request,pk):
+    dl=[]
     global flag
     if  flag==False:
         message="This is a Freshly Scraped Data"
@@ -38,9 +40,10 @@ def result(request,pk):
         flag=False
 
     data=storage.objects.filter(key=pk)
-    print(data)
-    print(message)
+    for i in data:
+        dl=(i.list_words)
     context={
-        'msg':message
+        'msg':message,
+        'data':dl
     }
-    return render(request,'result.html')
+    return render(request,'result.html',context)

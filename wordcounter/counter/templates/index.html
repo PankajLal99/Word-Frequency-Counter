@@ -4,19 +4,60 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
     <!-- Bootstrap CSS -->
+    {% load static %}
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <title>Home</title>
+    <style>
+        html,body {
+  height: 100%;
+  background-image: url("{% static 'pics/bg.jpg' %}");
+}
 
-    <title>Hello, world!</title>
+body {
+  display: -ms-flexbox;
+  display: -webkit-box;
+  display: flex;
+  -ms-flex-pack: center;
+  -webkit-box-pack: center;
+  justify-content: center;
+  color: #fff;
+  text-shadow: 0 .05rem .1rem rgba(0, 0, 0, .5);
+  box-shadow: inset 0 0 5rem rgba(0, 0, 0, .5);
+}
+
+.cover-container {
+  max-width: 42em;
+}
+.cover {
+    padding: 0 1.5rem;
+  }
+  .cover .btn-lg {
+    padding: .75rem 1.25rem;
+    font-weight: 700;
+  }
+
+    </style>
   </head>
   <body>
-    <h1>Enter the URL </h1>
-    <form action="" method="post">
-        {% csrf_token %}
-        {{form}}
-        <button type="submit" class="btn btn-primary">Submit</button>
-    </form>
+    <body class="text-center">
+
+        <div class="cover-container p-3 mx-auto my-auto">
+          <main role="main" class="inner cover">
+            <h1 class="cover-heading">Enter Your URL</h1>
+              <form action="" method="post">
+                {% load widget_tweaks %}
+                {% csrf_token %}
+                {{form.url|add_class:'form-control'}}
+                <button type="submit" class="btn btn-success mt-3">Submit</button>
+            </form>
+            </p>
+          </main>
+        </div>
+    
+    
+    
+    
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
